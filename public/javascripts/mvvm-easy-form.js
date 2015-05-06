@@ -1,0 +1,5 @@
+/*! 
+ * mvvm-easy-form v0.0.1
+ *build date : 2015-05-06
+ */
+define("mvvm-easy-form",[],function(){return{ViewModel:function(a,b){var c=this;c.current=ko.observable({options:{}}),$.each(b,function(a,b){c.current().options[b.key]=ko.observable(b.value)});for(var d in a)c.current().options[d]=ko.observable(a[d]);c.formOptions=ko.observableArray([]),c.existsInArray=function(a,b){var c=b.length,d=!1;_val=a.constructor==Function?a():a;for(var e=0;c>e;e++)if(b[e]==_val){d=!0;break}return d},c.valid=function(){var a=c.current().options,b=!0;return $.each(c.formOptions(),function(c,d){d.valid&&(d.valid_status(!0),$.each(d.valid,function(c,e){return e.regexp.test(a[d.key]())?void 0:(d.valid_status(!1),d.err_msg(e.msg),b=!1,!1)}))}),b};for(var e=b.length,f=0;e>f;f++){var g=$.extend({valid_status:ko.observable(!0),err_msg:ko.observable("")},b[f]);g.valid&&$.each(g.valid,function(a,b){b.regexp=new RegExp(b.regexp)}),c.formOptions.push(g)}}}});

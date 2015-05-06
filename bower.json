@@ -1,0 +1,22 @@
+{
+  "name": "mvvm-easy-form",
+  "version": "0.0.1",
+  "authors": [
+    "Karl Sun <karl.sun.cn@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower-components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.3",
+    "knockout": "~3.3.0",
+    "requirejs": "~2.1.17",
+    "bootstrap": "~3.3.4"
+  }
+}

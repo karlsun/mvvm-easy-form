@@ -1,0 +1,35 @@
+<!-- ko foreach: formOptions -->
+<div class="form-group" data-bind="css: {'has-error' : !valid_status()},visible: typeof($data.visible) == 'undefined' || $parent.existsInArray($parent.current().options[visible.key], visible.value)">
+    <label class="col-sm-3 control-label" data-bind="attr: {for: key}, text: label"></label>
+    <div class="col-sm-9">
+        <!-- ko if: control == "text" -->
+        <input type="text" class="form-control input-xlarge" data-bind="value: $parent.current().options[key], attr: {id: key, title: $parent.current().options[key]}" />
+        <!-- /ko -->
+        <!-- ko if: control == "select" -->
+        <select class="form-control" data-bind="value: $parent.current().options[key],
+                                  attr: {id: key},
+                                  options: typeof options == 'string' ? $parent.form_sources[options] : options,
+                                  optionsText: 'label',
+                                  optionsValue: 'value',
+                                  optionsCaption: '请选择...'">
+        </select>
+        <!-- /ko -->
+        <!-- ko if: control == "textarea" -->
+        <textarea class="form-control" data-bind="value: $parent.current().options[key], attr: {id: key}" ></textarea>
+        <!-- /ko -->
+        <!-- ko if: control == "checkbox" -->
+        <input class="form-control" type="checkbox" data-bind="checked: $parent.current().options[key], attr: {id: key}" />
+        <!-- /ko -->
+        <!-- ko if: control == "radio" -->
+            <!-- ko foreach: options -->
+            <label class="radio-inline">
+                <input type="radio" data-bind="checkedValue: value, checked: $root.current().options[$parent.key], attr: {name: $parent.key}" />
+                <span data-bind="text: label"></span>
+            </label>
+            <!-- /ko -->
+        <!-- /ko -->
+        <span class="help-block" data-bind='visible: valid_status, html: $data.desc'></span>
+        <span class="help-block" data-bind='visible: !valid_status(), html: $data.err_msg'></span>
+    </div>
+</div>
+<!-- /ko -->

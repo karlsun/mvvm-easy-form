@@ -1,0 +1,15 @@
+extends layout
+block scripts
+  script(type='text/javascript', data-main='javascripts/index-main', src='/bower-components/requirejs/require.js')
+block content
+  .row
+    #summary.col-md-3
+      .button-groups
+        button.btn.btn-default(type="button", data-bind="click: valid") 验证表单
+      ul(data-bind="with: formVal")
+        li(data-bind="text: name")
+        li(data-bind="text: gender")
+        li(data-bind="text: age")
+        li(data-bind="text: $data['age-range']")
+    .col-md-9
+      form#form-example.form-horizontal

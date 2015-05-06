@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+node_modules
+public/bower-components
+public/dist
+public/stylesheets/*.css
